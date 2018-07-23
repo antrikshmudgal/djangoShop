@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}On-line Shop{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   <style>
+   <style>
+*{
+margin:0px;
+padding:0px;
+}
+.bgimage{
+	background-image: url('eCommerce.jpg');
+	background-size: 100% 110%;
+	width: 100%;
+	height: 100vh;
+}
+
+.menu{
+	width: 100%;
+	height: 100px;
+	background-color:rgba(0,0,0,0.5);
+}
+.leftmenu{
+	width: 25%;
+	line-height: 100px;
+	float: left;
+	background-color: yellow;
+
+}
+.leftmenu h4{
+	padding-left: 70px;
+	font-weight: bold;
+	color: white;
+	font-size: 22px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.rightmenu{
+	width:75%;
+	height: 100px;
+	float: right;
+	background-color: red;
+}
+.rightmenu ul{
+	margin-left: 200px;
+}
+.rightmenu ul li {
+	font-family: 'Montserrat',sans-serif;
+	display: inline-block;
+	list-style: none;
+	font-size: 15px;
+	color:white;
+	font-weight: bold;
+	line-height: 100px;
+	margin-left: 40px;
+	text-transform: uppercase;
+}
+
+#firstlist{
+	color:orange;
+}
+.rightmenu ul li:hover{
+	color:orange;
+}
+
+.text{
+	width: 100%;
+	margin-top: 185px;
+	text-transform: uppercase;
+	text-align: center;
+	color:white;
+}
+.text h4{
+	font-size: 14px;
+	font-family: 'Open Sans',sans-serif;
+
+	}
+.text h1{
+	font-size:60px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700px;
+	margin:14px 0px;
+}
+
+.text h3{
+	font-size: 12px;
+	font-family: 'Open Sans',sans-serif;
+}
+#buttonone{
+	background-color:blue;
+	border: none;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 40px;
+	width: 150px;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 25px;
+	border: 3px solid white;
+}
+#buttontwo{
+	background-color:blue;
+	border:none;
+	font-family: 'Montserrat', sans-serif;
+	text-transform:uppercase;
+	font-weight:bold;
+	line-height: 40px;
+	border: 3px solid white;
+	width: 150px;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+   </style>
+</head>
+
+<body>
+{% include 'shop/navbar.html' %}
+
+<form class="form-wrapper">
+    <input type="text" id="search" placeholder="Search for..." required>
+    <input type="submit" value="go" id="submit">
+</form>
+ <div class="bgimage">
+
+<div style="background-color:lightblue">
+<div class="container">
+    <div class="row" style="margin-top: 6%">
+         <button class="btn btn-info pull-right">
+            {% with totail_items=cart|length %}
+                {% if cart|length > 0 %}
+                    My Shopping Order:
+                    <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                        {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+                    </a>
+                    {% else %}
+                    Your cart is empty.
+                {% endif %}
+            {% endwith %}
+         </button>
+    </div>
+</div>
+</div>
+</div>
+{% block content %}
+
+
+{% endblock %}
+
+<script src="{%}">
+<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<p>Copyright &copy; textured_orbs | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Website templates</a></p>
+<div id="content_footer"></div>
+<div id="footer">
+  <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.html">Contact Us</a></p>
+</body>
+</html>
